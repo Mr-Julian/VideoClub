@@ -42,10 +42,7 @@
         //echo "Login";
         include_once 'vista/login.php';
     }
-
-
     ?>
-    
 </body>
 
 </html>

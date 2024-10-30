@@ -14,6 +14,9 @@
             <li class="cerrar-sesion">
                 <a href="controlador/cerrarSesion.php">Cerrar sesión</a>
             </li>
+            <li class="empleados">
+            <a href="vista/clientes.ph">Administración Clientes</a>
+            </li>
         </ul>
     </div>
 
