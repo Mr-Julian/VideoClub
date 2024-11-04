@@ -1,9 +1,9 @@
 <?php
-    include_once 'sesion.php';
+include_once '../modelo/sesion.php';
 
-    $userSession = new UserSession();
-    $userSession->closeSession();
+$userSession = new UserSession();
+$userSession->closeSession();
 
-    header("location: ../index.php");
-
-?>
+// Redirigir a la página de inicio
+header("Location: ../index.php");
+exit(); // Asegúrate de terminar el script después de redirigir

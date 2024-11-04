@@ -12,40 +12,32 @@
     <?php
 
     include_once 'controlador/usuario.php';
-    include_once 'controlador/sesion.php';
+    include_once 'modelo/sesion.php';
 
     $userSession = new UserSession();
     $user = new User();
 
     if (isset($_SESSION['user'])) {
-        //echo "Hay sesión";
         $user->setUser($userSession->getCurrentUser());
         include_once 'vista/home.php';
     } else if (isset($_POST['username']) && isset($_POST['password'])) {
-        //echo "Validación de login";
-
         $userForm = $_POST['username'];
         $passForm = $_POST['password'];
 
+        // Verifica si el usuario y la contraseña son correctos
         if ($user->userExists($userForm, $passForm)) {
-            //echo "usuario validado";
             $userSession->setCurrentUser($userForm);
             $user->setUser($userForm);
-
+            $userSession->setCurrentCargo($user->getCargo());
             include_once 'vista/home.php';
         } else {
-            //echo "nombre de usuario y/o password incorrecto";
-            $errorLogin = "Nombre de usuario y/o password es incorrecto";
+            $errorLogin = "Nombre de usuario y/o contraseña incorrecto";
             include_once 'vista/login.php';
         }
     } else {
-        //echo "Login";
         include_once 'vista/login.php';
     }
-
-
     ?>
-    
 </body>
 
 </html>
